@@ -5,6 +5,10 @@ const AssetSchema = new mongoose.Schema({
     type: Date,
     required: false,
   },
+  type: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: false,
@@ -27,6 +31,11 @@ const AssetSchema = new mongoose.Schema({
   },
   number: {
     type: String,
+    required: false,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: false,
   },
 });

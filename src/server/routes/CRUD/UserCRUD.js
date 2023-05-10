@@ -1,3 +1,4 @@
+const Asset = require("../../models/Asset");
 const User = require("../../models/User");
 
 const getUser = async (req, res) => {
@@ -26,31 +27,6 @@ const createUser = async (req, res) => {
   }
 };
 
-const updateUser = (req, res) => {
-  User.findOneAndUpdate(
-    { _id: req.params.userID },
-    {
-      $set: {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        title: req.body.title,
-        startDate: req.body.startDate,
-      },
-      $push: {
-        assets: req.body.assets, // add the new asset ID to the existing assets array
-      },
-    },
-    { new: true }
-  )
-    .populate("assets") // populate the asset details
-    .then((updatedUser) => {
-      res.json(updatedUser);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-};
-
 const deleteUser = (req, res) => {
   User.deleteOne({ _id: req.params.userID })
     .then(() => res.json({ message: "User Deleted" }))
@@ -60,6 +36,6 @@ const deleteUser = (req, res) => {
 module.exports = {
   getUser,
   createUser,
-  updateUser,
+  // updateUser,
   deleteUser,
 };

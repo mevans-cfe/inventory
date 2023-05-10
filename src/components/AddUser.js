@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function AddUser() {
+function AddUser({ onUserAdded }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -29,6 +29,7 @@ function AddUser() {
           title: "",
           startDate: new Date(),
         });
+        onUserAdded(res.data); // Notify the parent component about the new user
       })
       .catch((err) => console.log(err));
   };

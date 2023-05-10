@@ -1,13 +1,9 @@
-import AddAssetToUser from "./components/AddAssetToUser";
-import AddAsset from "./components/AddAssets";
-import AddUser from "./components/AddUser";
+import AssetTable from "./components/AssetTable";
 
 function App() {
   return (
-    <div className="App">
-      <AddUser />
-      <AddAsset />
-      <AddAssetToUser />
+    <div>
+      <AssetTable />
     </div>
   );
 }
